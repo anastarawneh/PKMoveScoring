@@ -584,7 +584,18 @@ Score -12 and terminate<br><br></p>
 </td>
 <td style="background-color:#F7D10F;">
 <h2 style="color:black;">Eval Att</h2>
-<p style="color:black;">If the effectiveness of the move is 4x:<br>
+<p style="color:black;"><b>NOTE: Due to testing, we discovered that Bulldoze uses Magnitude calculations for scoring purposes<br>
+This means the when the AI checks for damage rolls, it will have a power listed below.<br>
+Actual damage will be what is shown in the calc though.<br>Base Power and Chances</b><br>
+10 - 5%, 30 - 10%, 50 - 20%, 70 - 30%, 90 - 20%, 110 - 10%, 150 - 5%<br><br>
+
+If the move can KO the target:<br>
+Score +4 and terminate<br><br>
+
+If the move cannot KO the target, and a different move the user knows would do more damage to the target:<br>
+Score -1 and terminate<br><br>
+
+If the effectiveness of the move is 4x:<br>
 68.8% (176/256) chance of score +2 and terminate<br><br></p>
 
 </td></tr>

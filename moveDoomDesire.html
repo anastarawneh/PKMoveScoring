@@ -576,7 +576,7 @@ function filterFunction() {
 <td>
 </td>
 <td>
-<h1>Conversion 2</h1>
+<h1>Doom Desire</h1>
 </td>
 </tr>
 
@@ -585,7 +585,14 @@ function filterFunction() {
 </td>
 <td style="background-color:#F6FA0A">
 <h2 style="color:black;">Basic</h2>
-<p style="color:black;">(No applicable AI procedures)</p>
+<p style="color:black;">If the effectiveness of the move is 0x:<br>
+Score -10 and terminate<br><br>
+If the target's ability is Wonder Guard, and the effectiveness of the move is not 2x or 4x, and the user's ability is not Mold Breaker:<br>
+Score -12 and terminate<br><br>
+If the user's side is awaiting a future attack:<br>
+Score -12 and terminate<br><br>
+If the target's side is awaiting a future attack:<br>
+Score -12 and terminate</p>
 
 </td></tr>
 <tr>
@@ -593,7 +600,11 @@ function filterFunction() {
 </td>
 <td style="background-color:#FFBC17;">
 <h2 style="color:black;">Eval Att</h2>
-<p style="color:black;">If the effectiveness of the move is 4x:<br>
+<p style="color:black;">If the move can KO the target:<br>
+Score +4 and terminate<br><br>
+If the move cannot KO the target, and a different move the user knows would do more damage to the target:<br>
+Score -1 and terminate<br><br>
+If the effectiveness of the move is 4x:<br>
 68.8% (176/256) chance of score +2 and terminate<br><br></p>
 
 </td></tr>
@@ -610,7 +621,25 @@ function filterFunction() {
 </td>
 <td style="background-color:#F74F4F;">
 <h2 style="color:black;">Doubles vs Opponent</h2>
-<p style="color:black;">(No applicable AI procedures)</p>
+<p style="color:black;">If the move cannot KO the target, and the user's ally's HP is over 0% (after rounding):<br>
+If the effectiveness of the move is 1/2x:<br>
+75% (192/256) chance of score -1 and continue<br><br>
+If the effectiveness of the move is 1/4x:<br>
+75% (192/256) chance of score -2 and continue<br><br>
+If the move deals the most damage to the target when considering all of the user's ally's moves as well (regardless of if the ally is alive):<br>
+50% (128/256) chance of score +1 and continue<br><br>
+If the move did not receive a score +1 in the previous check:<br>
+If the effectiveness of the move is 2x:<br>
+60.9% (156/256) chance of score +1 and continue<br><br>
+If the effectiveness of the move is 4x:<br>
+75% (192/256) chance of score +1 and continue<br><br>
+If the user's ally knows the move Future Sight or Doom Desire:<br>
+If the user's ally's HP is 0% (after rounding):<br>
+No score change and terminate<br><br>
+If the user will attack after its ally:<br>
+Score -3 and terminate<br><br>
+If the user will speed tie with its ally:<br>
+25% (64/256) chance of score -3 and terminate</p>
 	
 
 </td></tr>
@@ -619,8 +648,9 @@ function filterFunction() {
 </td>
 <td style="background-color:#F73131">	
 <h2 style="color:black;">Doubles vs Ally</h2>
-<p style="color:black;">
-Unconditionally:<br>
+<p style="color:black;">If the target's ability is Flash Fire, and Flash Fire has not been activated already:<br>
+Score +3 and terminate<br><br>
+Otherwise:<br>
 Score -30 and terminate</p>
 	
 </td></tr>
@@ -643,37 +673,21 @@ Score -30 and terminate</p>
 </td>
 <td style="background-color:#4C7DFC">		
 <h2 style="color:black;">Prio Damage</h2>
-<p style="color:black;">Unconditionally:<br>
-61% (156/256) chance of score +2 and terminate</p>
+<p style="color:black;">(No applicable AI procedures)</p>
 </td></tr>
 <tr>
 <td>
 </td>
 <td style="background-color:#5C6AF7">		
 <h2 style="color:black;">Baton Pass</h2>
-<p style="color:black;">If the user has no other living party members:<br>
-No scoring change and terminate<br><br>
-If the user doesn't know the move Baton Pass:<br>
-30.86% (79/256) chance of no scoring change and terminate<br>
-<b>This is a rare instance where if you do not hit the 30.86%,<br> you continue to the below lines rather than always terminate</b><br><br>
-If it is the first turn of battle:<br>
-92.58% (237/256) chance of score +8 and terminate<br><br>
-If it is not the first turn of battle:<br>
-92.58% (237/256) chance of score +3 and continue<br><br>
-If the user's HP is under 60%:<br>
-Score -10 and terminate<br>
-Otherwise:<br>
-Score +1 and terminate</p>
+<p style="color:black;">(No applicable AI procedures)</p>
 </td></tr>
 <tr>
 <td>
 </td>
 <td style="background-color:#D49DEB">		
 <h2 style="color:black;">Check HP</h2>
-<p style="color:black;">If the user's HP is under 70%:<br>
-80.5% (206/256) chance of score -2 and terminate<br><br>
-If the target's HP is under 31%:<br>
-80.5% (206/256) chance of score -2 and terminate</p>
+<p style="color:black;">(No applicable AI procedures)</p>
 </td></tr>
 <tr>
 <td>

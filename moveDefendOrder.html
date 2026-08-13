@@ -576,7 +576,7 @@ function filterFunction() {
 <td>
 </td>
 <td>
-<h1>Conversion 2</h1>
+<h1>Defend Order</h1>
 </td>
 </tr>
 
@@ -585,7 +585,12 @@ function filterFunction() {
 </td>
 <td style="background-color:#F6FA0A">
 <h2 style="color:black;">Basic</h2>
-<p style="color:black;">(No applicable AI procedures)</p>
+<p style="color:black;">If the user's ability is Simple, and its current defense or special defense is boosted to +3 or more:<br>
+Score -10 and terminate<br><br>
+If the user's current defense is boosted to +6:<br>
+Score -10 and terminate<br><br>
+If the user's current special defense is boosted to +6:<br>
+Score -8 and terminate</p>
 
 </td></tr>
 <tr>
@@ -602,7 +607,21 @@ function filterFunction() {
 </td>
 <td style="background-color:#F79A0F;">
 <h2 style="color:black;">Expert</h2>
-<p style="color:black;">(No applicable AI procedures)</p>
+<p style="color:black;">If the user's current special defense is boosted to +3 or more:<br>
+60.9% (156/256) chance of score -1 and continue<br><br>
+If the user's HP is full and its current special defense is boosted to under +3:<br>
+50% (128/256) chance of score +2 and continue<br><br>
+If the user's HP is over 69%:<br>
+With a 78.1% (200/256) chance:<br>
+No scoring change and terminate<br><br>
+If the user's HP is under 40%:<br>
+Score -2 and terminate<br><br>
+If the last move used by the foe was nondamaging, or the foe has not yet used a move:<br>
+76.6% (196/256) chance of score -2 and terminate<br><br>
+If the last move used by the foe was physical:<br>
+Score -2 and terminate<br><br>
+Otherwise:
+58.6% (2401/4096) chance of score -2 and terminate</p>
 
 </td></tr>
 <tr>
@@ -612,15 +631,13 @@ function filterFunction() {
 <h2 style="color:black;">Doubles vs Opponent</h2>
 <p style="color:black;">(No applicable AI procedures)</p>
 	
-
 </td></tr>
 <tr>
 <td>
 </td>
 <td style="background-color:#F73131">	
 <h2 style="color:black;">Doubles vs Ally</h2>
-<p style="color:black;">
-Unconditionally:<br>
+<p style="color:black;">Unconditionally:<br>
 Score -30 and terminate</p>
 	
 </td></tr>
@@ -629,7 +646,8 @@ Score -30 and terminate</p>
 </td>
 <td style="background-color:#86F7C4">		
 <h2 style="color:black;">Setup First Turn</h2>
-<p style="color:black;">(No applicable AI procedures)</p>
+<p style="color:black;">If it is the first turn of battle:<br>
+68.75% (176/256) chance of score +2 and terminate</p>
 </td></tr>
 <tr>
 <td>
@@ -672,7 +690,7 @@ Score +1 and terminate</p>
 <h2 style="color:black;">Check HP</h2>
 <p style="color:black;">If the user's HP is under 70%:<br>
 80.5% (206/256) chance of score -2 and terminate<br><br>
-If the target's HP is under 31%:<br>
+If the target's HP is under 71%:<br>
 80.5% (206/256) chance of score -2 and terminate</p>
 </td></tr>
 <tr>

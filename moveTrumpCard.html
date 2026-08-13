@@ -26,6 +26,19 @@ p {text-align:center; color: white;}
   background-color: #2980B9;
 }
 
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -60,8 +73,8 @@ p {text-align:center; color: white;}
 <th>
 <div class="dropdown">
   <button onclick="myFunction()" class="dropbtn">Select Move</button>
-
   <div id="myDropdown" class="dropdown-content">
+<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
 <a href="moveAbsorb.html">Absorb</a>
 <a href="moveAccelerock.html">Accelerock</a>
 <a href="moveAcid.html">Acid</a>
@@ -85,7 +98,7 @@ p {text-align:center; color: white;}
 <a href="moveAttackOrder.html">Attack Order</a>
 <a href="moveAttract.html">Attract</a>
 <a href="moveAuraSphere.html">Aura Sphere</a>
-<a href="moveAurora Beam.html">Aurora Beam</a>
+<a href="moveAuroraBeam.html">Aurora Beam</a>
 <a href="moveAvalanche.html">Avalanche</a>
 <a href="moveBarrier.html">Barrier</a>
 <a href="moveBatonPass.html">Baton Pass</a>
@@ -140,7 +153,7 @@ p {text-align:center; color: white;}
 <a href="moveCut.html">Cut</a>
 <a href="moveDarkPulse.html">Dark Pulse</a>
 <a href="moveDarkVoid.html">Dark Void</a>
-<a href="moveDefend Order.html">Defend Order</a>
+<a href="moveDefendOrder.html">Defend Order</a>
 <a href="moveDefog.html">Defog</a>
 <a href="moveDestinyBond.html">Destiny Bond</a>
 <a href="moveDetect.html">Detect</a>
@@ -149,7 +162,7 @@ p {text-align:center; color: white;}
 <a href="moveDischarge.html">Discharge</a>
 <a href="moveDive.html">Dive</a>
 <a href="moveDizzyPunch.html">Dizzy Punch</a>
-<a href="moveDoom Desire.html">Doom Desire</a>
+<a href="moveDoomDesire.html">Doom Desire</a>
 <a href="moveDoubleHit.html">Double Hit</a>
 <a href="moveDoubleKick.html">Double Kick</a>
 <a href="moveDoubleTeam.html">Double Team</a>
@@ -258,7 +271,7 @@ p {text-align:center; color: white;}
 <a href="moveHPRock.html">HP Rock</a>
 <a href="moveHPWater.html">HP Water</a>
 <a href="moveHurricane.html">Hurricane</a>
-<a href="moveHydr Cannon.html">Hydro Cannon</a>
+<a href="moveHydroCannon.html">Hydro Cannon</a>
 <a href="moveHydroPump.html">Hydro Pump</a>
 <a href="moveHyperBeam.html">Hyper Beam</a>
 <a href="moveHyperFang.html">Hyper Fang</a>
@@ -426,7 +439,7 @@ p {text-align:center; color: white;}
 <a href="moveSilverWind.html">Silver Wind</a>
 <a href="moveSing.html">Sing</a>
 <a href="moveSketch.html">Sketch</a>
-<a href="moveSkill Swap.html">Skill Swap</a>
+<a href="moveSkillSwap.html">Skill Swap</a>
 <a href="moveSkyAttack.html">Sky Attack</a>
 <a href="moveSkyUppercut.html">Sky Uppercut</a> 
 <a href="moveSlackOff.html">Slack Off</a>
@@ -537,16 +550,17 @@ function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+function filterFunction() {
+  const input = document.getElementById("myInput");
+  const filter = input.value.toUpperCase();
+  const div = document.getElementById("myDropdown");
+  const a = div.getElementsByTagName("a");
+  for (let i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
     }
   }
 }
@@ -580,7 +594,7 @@ Score -12 and terminate</p>
 <tr>
 <td>
 </td>
-<td style="background-color:#F7D10F;">
+<td style="background-color:#FFBC17;">
 <h2 style="color:black;">Eval Att</h2>
 <p style="color:black;">If the effectiveness of the move is 4x:<br>
 68.8% (176/256) chance of score +2 and terminate<br><br></p>
@@ -612,7 +626,7 @@ If the remaining PP of the move is 3:<br>
 <tr>
 <td>
 </td>
-<td style="background-color:#0FF7E4;">
+<td style="background-color:#F74F4F;">
 <h2 style="color:black;">Doubles vs Opponent</h2>
 <p style="color:black;">(No applicable AI procedures)</p>
 	
@@ -620,7 +634,7 @@ If the remaining PP of the move is 3:<br>
 <tr>
 <td>
 </td>
-<td style="background-color:#0792DB">	
+<td style="background-color:#F73131">	
 <h2 style="color:black;">Doubles vs Ally</h2>
 <p style="color:black;">Unconditionally:<br>
 Score -30 and terminate</p>
@@ -629,21 +643,21 @@ Score -30 and terminate</p>
 <tr>
 <td>
 </td>
-<td style="background-color:#FA197B">		
+<td style="background-color:#86F7C4">		
 <h2 style="color:black;">Setup First Turn</h2>
 <p style="color:black;">(No applicable AI procedures)</p>
 </td></tr>
 <tr>
 <td>
 </td>
-<td style="background-color:#ED1602">		
+<td style="background-color:#87BA84">		
 <h2 style="color:black;">Risky</h2>
 <p style="color:black;">(No applicable AI procedures)</p>
 </td></tr>
 <tr>
 <td>
 </td>
-<td style="background-color:#FA7619">		
+<td style="background-color:#4C7DFC">		
 <h2 style="color:black;">Prio Damage</h2>
 <p style="color:black;">Unconditionally:<br>
 61% (156/256) chance of score +2 and terminate</p>
@@ -651,28 +665,28 @@ Score -30 and terminate</p>
 <tr>
 <td>
 </td>
-<td style="background-color:#FA19C5">		
+<td style="background-color:#5C6AF7">		
 <h2 style="color:black;">Baton Pass</h2>
 <p style="color:black;">(No applicable AI procedures)</p>
 </td></tr>
 <tr>
 <td>
 </td>
-<td style="background-color:#6CFA19">		
+<td style="background-color:#D49DEB">		
 <h2 style="color:black;">Check HP</h2>
 <p style="color:black;">(No applicable AI procedures)</p>
 </td></tr>
 <tr>
 <td>
 </td>
-<td style="background-color:#1937FA">		
+<td style="background-color:#9F5EBD">		
 <h2 style="color:black;">Weather</h2>
 <p style="color:black;">(No applicable AI procedures)</p>
 </td></tr>
 <tr>
 <td>
 </td>
-<td style="background-color:#0B9E1E">		
+<td style="background-color:#9744BD">		
 <h2 style="color:black;">Harassment</h2>
 <p style="color:black;">(No applicable AI procedures)</p>
 	

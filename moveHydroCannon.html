@@ -576,7 +576,7 @@ function filterFunction() {
 <td>
 </td>
 <td>
-<h1>Fire Ball</h1>
+<h1>Hydro Cannon</h1>
 </td>
 </tr>
 
@@ -587,10 +587,8 @@ function filterFunction() {
 <h2 style="color:black;">Basic</h2>
 <p style="color:black;">If the effectiveness of the move is 0x:<br>
 Score -10 and terminate<br><br>
-
-If the target's ability is Flash Fire, and the user's ability is not Mold Breaker:<br>
+If the target's ability is Water Absorb or Dry Skin, and the user's ability is not Mold Breaker:<br>
 Score -12 and terminate<br><br>
-	
 If the target's ability is Wonder Guard, and the effectiveness of the move is not 2x or 4x, and the user's ability is not Mold Breaker:<br>
 Score -12 and terminate<br><br></p>
 
@@ -602,10 +600,8 @@ Score -12 and terminate<br><br></p>
 <h2 style="color:black;">Eval Att</h2>
 <p style="color:black;">If the move can KO the target:<br>
 Score +4 and terminate<br><br>
-
 If the move cannot KO the target, and a different move the user knows would do more damage to the target:<br>
 Score -1 and terminate<br><br>
-
 If the effectiveness of the move is 4x:<br>
 68.8% (176/256) chance of score +2 and terminate<br><br></p>
 
@@ -615,7 +611,10 @@ If the effectiveness of the move is 4x:<br>
 </td>
 <td style="background-color:#F79A0F;">
 <h2 style="color:black;">Expert</h2>
-<p style="color:black;">(No applicable AI procedures)</p>
+<p style="color:black;">If the effectiveness of the move is 1/2x, 1/4x, or 0x:<br>
+No scoring change and terminate<br><br>
+If the user's ability is Rock Head or Magic Guard:<br>
+Score +1 and terminate</p>
 
 </td></tr>
 <tr>
@@ -635,7 +634,7 @@ If the effectiveness of the move is 2x:<br>
 60.9% (156/256) chance of score +1 and continue<br><br>
 If the effectiveness of the move is 4x:<br>
 75% (192/256) chance of score +1 and continue<br><br>
-If the user's ability is Flash Fire, and Flash Fire has been activated already:<br>
+If the user's ally knows the move Helping Hand:<br>
 Score +1 and terminate</p>
 	
 </td></tr>
@@ -644,9 +643,7 @@ Score +1 and terminate</p>
 </td>
 <td style="background-color:#F73131">	
 <h2 style="color:black;">Doubles vs Ally</h2>
-<p style="color:black;">If the target's ability is Flash Fire, and Flash Fire has not been activated already:<br>
-Score +3 and terminate<br><br>
-Otherwise:<br>
+<p style="color:black;">Unconditionally:<br>
 Score -30 and terminate</p>
 	
 </td></tr>

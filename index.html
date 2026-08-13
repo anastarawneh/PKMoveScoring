@@ -26,6 +26,19 @@ p {text-align:center; color: white;}
   background-color: #2980B9;
 }
 
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -60,8 +73,8 @@ p {text-align:center; color: white;}
 <th>
 <div class="dropdown">
   <button onclick="myFunction()" class="dropbtn">Select Move</button>
-
   <div id="myDropdown" class="dropdown-content">
+<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
 <a href="moveAbsorb.html">Absorb</a>
 <a href="moveAccelerock.html">Accelerock</a>
 <a href="moveAcid.html">Acid</a>
@@ -85,7 +98,7 @@ p {text-align:center; color: white;}
 <a href="moveAttackOrder.html">Attack Order</a>
 <a href="moveAttract.html">Attract</a>
 <a href="moveAuraSphere.html">Aura Sphere</a>
-<a href="moveAurora Beam.html">Aurora Beam</a>
+<a href="moveAuroraBeam.html">Aurora Beam</a>
 <a href="moveAvalanche.html">Avalanche</a>
 <a href="moveBarrier.html">Barrier</a>
 <a href="moveBatonPass.html">Baton Pass</a>
@@ -140,7 +153,7 @@ p {text-align:center; color: white;}
 <a href="moveCut.html">Cut</a>
 <a href="moveDarkPulse.html">Dark Pulse</a>
 <a href="moveDarkVoid.html">Dark Void</a>
-<a href="moveDefend Order.html">Defend Order</a>
+<a href="moveDefendOrder.html">Defend Order</a>
 <a href="moveDefog.html">Defog</a>
 <a href="moveDestinyBond.html">Destiny Bond</a>
 <a href="moveDetect.html">Detect</a>
@@ -149,7 +162,7 @@ p {text-align:center; color: white;}
 <a href="moveDischarge.html">Discharge</a>
 <a href="moveDive.html">Dive</a>
 <a href="moveDizzyPunch.html">Dizzy Punch</a>
-<a href="moveDoom Desire.html">Doom Desire</a>
+<a href="moveDoomDesire.html">Doom Desire</a>
 <a href="moveDoubleHit.html">Double Hit</a>
 <a href="moveDoubleKick.html">Double Kick</a>
 <a href="moveDoubleTeam.html">Double Team</a>
@@ -258,7 +271,7 @@ p {text-align:center; color: white;}
 <a href="moveHPRock.html">HP Rock</a>
 <a href="moveHPWater.html">HP Water</a>
 <a href="moveHurricane.html">Hurricane</a>
-<a href="moveHydr Cannon.html">Hydro Cannon</a>
+<a href="moveHydroCannon.html">Hydro Cannon</a>
 <a href="moveHydroPump.html">Hydro Pump</a>
 <a href="moveHyperBeam.html">Hyper Beam</a>
 <a href="moveHyperFang.html">Hyper Fang</a>
@@ -426,7 +439,7 @@ p {text-align:center; color: white;}
 <a href="moveSilverWind.html">Silver Wind</a>
 <a href="moveSing.html">Sing</a>
 <a href="moveSketch.html">Sketch</a>
-<a href="moveSkill Swap.html">Skill Swap</a>
+<a href="moveSkillSwap.html">Skill Swap</a>
 <a href="moveSkyAttack.html">Sky Attack</a>
 <a href="moveSkyUppercut.html">Sky Uppercut</a> 
 <a href="moveSlackOff.html">Slack Off</a>
@@ -537,16 +550,17 @@ function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+function filterFunction() {
+  const input = document.getElementById("myInput");
+  const filter = input.value.toUpperCase();
+  const div = document.getElementById("myDropdown");
+  const a = div.getElementsByTagName("a");
+  for (let i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
     }
   }
 }
@@ -563,17 +577,11 @@ window.onclick = function(event) {
 <td>
 <h1>AI Move Scoring Guide</h1>
 <p>This site, and information within is adapted from the <a
-	href="https://pokemow.com/Gen4/TrainerAI/">Generation 4 site</a> created by PokeMow and the
-	<a href="https://will-jj.github.io/gen4to3MowAI/">Generation 3 site</a> created by Thrillis (aka: Will)
-			for Platinum Kaizo play.<br><br>
-	Also, special thanks to<br>
-	Lhea for going through the Platinum decomp and creating a doc for gen4 scoring<br>
-	Sketchy101 for notifying and confirming a few bugs within Platinum Kaizo<br>
-	Magpie for clarifying several issues that I encountered<br>
-	Hzla for clarifying several issues that I encountered<br>
-	And Constrictor, for not only helping clarifying several issues that I encountered, but also for convincing me to create this site</p>
-<h3>Please report any issues to BPark16 on Discord</h3>
-		<h2>Overview<br> Please Read</h2>
+	href="https://pokemow.com/Gen4/TrainerAI/">Generation 4 site</a> and the <a href="https://will-jj.github.io/gen4to3MowAI/">Generation 3 site</a>
+			for Platinum Kaizo play.
+			During the initial deployment some information in this briefing, and the subsequent move choice scoring may
+			reflect that - please report any issues to BPark16 on Discord</p>
+		<h2>Overview<br>Please Read</h2>
 		<p>This page will look up trainer battle AI procedures for the
 			Generation IV Pokémon romhack – Pokémon Platinum Kaizo.</p>
 
@@ -583,13 +591,13 @@ window.onclick = function(event) {
 			added or subtracted to by the different parts of the scoring procedure.</p>
 	
 		<p>Each scoring module (or flag) will run their scoring procedure
-			depending upon AI flags of the trainer. Each module runs
+			depending upon AI flags of the trainer. Each flag runs
 			independently, and their scores stack together. Only Doubles AI will
 			attempt to use moves on the ally.</p>
 
 		<h2>The "terminate" keyword within a
-			module means that the scoring of the module is complete, but other
-			modules may still continue on top of the work that it did.</h2>
+			flag means that the scoring of the flag is complete, but other
+			flags will still continue on top of the work that it did.</h2>
 	
 		<p>Every move is scored on every target on the field (even if that
 			doesn't make sense for the move, such as Swords Dance or Earthquake),
@@ -611,7 +619,7 @@ window.onclick = function(event) {
 			randomness within the scoring functions.</p>
 
 		<h2>Move Scoring</h2>
-		<p>The scoring procedure is split into eleven main modules: Basic, Eval Att, Expert, Doubles, Setup First Turn, Risky, Prio Damage, Baton Pass, Check HP, Weather, and Harassment.</p>
+		<p>The scoring procedure is split into eleven main flags: Basic, Eval Att, Expert, Doubles, Setup First Turn, Risky, Prio Damage, Baton Pass, 		Check HP, Weather, and Harassment.</p>
 
 		<p>As a general rule:</p>
 		<ul>
@@ -632,7 +640,7 @@ window.onclick = function(event) {
 			</li>
 			
 			<li>
-				<p><strong>Doubles AI (also referred to as Tag)</strong> discourages using attacks on the
+				<p><strong>Doubles AI</strong> discourages using attacks on the
 					ally without a good reason, and checks if moves such as weather or Trick
 					Room will help or harm the ally.</p>
 				<p>
@@ -642,7 +650,7 @@ window.onclick = function(event) {
 					attack the ally.</p>
 			</li>
 			<li>
-				<p><strong>Setup First Turn AI (also referred to as Status)</strong> encourages status moves on both the user and opponent in <b>ONLY on the first turn of the entire battle.</b></p>
+				<p><strong>Setup First Turn AI</strong> encourages status moves on both the user and opponent in <b>ONLY on the first turn of the entire battle.</b></p>
 			</li>
 			
 			<li>
@@ -650,7 +658,7 @@ window.onclick = function(event) {
 			</li>
 
 			<li>
-				<p><strong>Prio Damage AI (also referred to as Prioritize Extremes)</strong> adds a chance of a scoring bonus to moves not calculated for damage.</p>
+				<p><strong>Prio Damage AI</strong> adds a chance of a scoring bonus to certain moves.</p>
 			</li>
 
 			<li>
@@ -667,6 +675,13 @@ window.onclick = function(event) {
 			</li>
 		</ul>
 
+		<p>None, one, or several of these modules run their scoring procedure
+			depending upon the context of the battle. Each module runs
+			independently, and their scores stack together. Only Doubles AI will
+			attempt to use moves on the ally.</p>
+		<h2>The "terminate" keyword within a
+			module means that the scoring of the module is complete, but other
+			modules may still continue on top of the work that it did.</h2>
 
 		<h2>AI knowledge</h2>
 		<p>The AI always knows what item you're holding. It cheats to see it.</p>
@@ -817,6 +832,53 @@ window.onclick = function(event) {
 			
 			<p>Multipliers used for the <em>input</em> of damage calculation (such as: Choice items / Light Ball / Thick Club / type-boosting items, Light Screen / Reflect, Torrent / Huge Power / Thick Fat, weather type boosts, etc., etc.) are applied as normal. Embargo negating held item effects is also applied. For more information on this, check <a target="_blank" href="https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_IV">the Bulbapedia article on damage calculation</a>, as well as the corresponding article for any specific ability or item to verify its exact mechanism of affecting the damage formula.</p>
 			
+			<h4>Excluded moves</h4>
+			
+			<p>These moves are not accepted for damage calculation. Any attempt to calculate their damage will result in a damage of 0, <em>except</em> when checking the damage of the move previously used by another Pokémon (as in Copycat or Me First). If calculated in this way, moves with a nonregular base power such as Fling, Present, Flail, or Sheer Cold will be treated as having a base power of 1. Full HP will be assumed for Eruption and Water Spout. Magnitude uniquely will generate a random power level if its damage is calculated in this way.</p>
+			
+			<ul>
+				<li>Guillotine</li>
+				<li>Horn Drill</li>
+				<li>Counter</li>
+				<li>Fissure</li>
+				<li>Bide</li>
+				<li>Super Fang</li>
+				<li>Flail</li>
+				<li>Reversal</li>
+				<li>Present</li>
+				<li>Magnitude</li>
+				<li>Mirror Coat</li>
+				<li>Endeavor</li>
+				<li>Sheer Cold</li>
+				<li>Metal Burst</li>
+				<li>Fling</li>
+				<li>Trump Card</li>
+				<li>Wring Out</li>
+				<li>Punishment</li>
+				<li>Crush Grip</li>
+				<li>Selfdestruct</li>
+				<li>Explosion</li>
+				<li>Dream Eater</li>
+				<li>Razor Wind</li>
+				<li>Sky Attack</li>
+				<li>Hyper Beam</li>
+				<li>Hydro Cannon</li>
+				<li>Blast Burn</li>
+				<li>Frenzy Plant</li>
+				<li>Giga Impact</li>
+				<li>Rock Wrecker</li>
+				<li>Roar of Time</li>
+				<li>Skull Bash</li>
+				<li>SolarBeam</li>
+				<li>Spit Up</li>
+				<li>Focus Punch</li>
+				<li>Superpower</li>
+				<li>Eruption</li>
+				<li>Water Spout</li>
+				<li>Sucker Punch</li>
+				<li>Head Smash</li>
+			</ul>
+
 
 
 		<h2>Other notes and quirks</h2>

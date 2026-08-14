@@ -1,0 +1,6 @@
+8/13/2026
+  Updated all with searchbar/baton changes
+8/14/2026
+  Updated the following adding baton AI
+      Brave Bird, Close Combat, Counter, Explosion, Fissure, Flail, Guillotine, Head Smash
+      Horn Drill, Memento, Mirror Coat, Reversal, Selfdestruct, Take Down, Water Spout

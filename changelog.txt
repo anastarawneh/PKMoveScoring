@@ -4,3 +4,6 @@
   Updated the following adding baton AI
       Brave Bird, Close Combat, Counter, Explosion, Fissure, Flail, Guillotine, Head Smash
       Horn Drill, Memento, Mirror Coat, Reversal, Selfdestruct, Take Down, Water Spout
+8/16/2026
+  Updated the following adding baton AI
+      Dream Eater, Focus Punch, Solarbeam

@@ -4,6 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">
 	<title>Platinum Kaizo AI Move Scoring</title>
+	<script type="text/javascript" src="index.js"></script>
 <meta name="viewport" content="width=600">
 <style>
 body {background-color: #5E5E5E; color: white;}
@@ -543,28 +544,6 @@ p {text-align:center; color: white;}
 <a href="moveZenHeadbutt.html">Zen Headbutt</a>
   </div>
 </div>
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-function filterFunction() {
-  const input = document.getElementById("myInput");
-  const filter = input.value.toUpperCase();
-  const div = document.getElementById("myDropdown");
-  const a = div.getElementsByTagName("a");
-  for (let i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
-</script>
 </th>
 <th>
 <h1>Platinum Kaizo AI Move Scoring</h1>

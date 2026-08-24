@@ -2,6 +2,9 @@
 toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
+  if (document.getElementById("myDropdown").classList.contains("show")) {
+    document.getElementById("myInput").select();
+  }
 }
 
 function filterFunction() {
